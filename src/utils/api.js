@@ -19,6 +19,7 @@ class Api {
   
     getCardList() {
       return fetch(`${this._address}/cards`, {
+        credentials: 'include',
         headers: {
           'Authorization': `Bearer ${this._token}`,
         },
@@ -28,6 +29,7 @@ class Api {
   
     addCard({ name, link }) {
       return fetch(`${this._address}/cards`, {
+        credentials: 'include',
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${this._token}`,
@@ -43,6 +45,7 @@ class Api {
   
     removeCard(cardId) {
       return fetch(`${this._address}/cards/${cardId}`, {
+        credentials: 'include',
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${this._token}`,
@@ -53,6 +56,7 @@ class Api {
   
     getUserInfo() {
       return fetch(`${this._address}/users/me`, {
+        credentials: 'include',
         headers: {
           'Authorization': `Bearer ${this._token}`,
           'Content-Type': 'application/json',
@@ -63,6 +67,7 @@ class Api {
   
     setUserInfo({ name, about }) {
       return fetch(`${this._address}/users/me`, {
+        credentials: 'include',
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${this._token}`,
@@ -78,6 +83,7 @@ class Api {
   
     setUserAvatar({ avatar }) {
       return fetch(`${this._address}/users/me/avatar`, {
+        credentials: 'include',
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${this._token}`,
@@ -92,6 +98,7 @@ class Api {
     changeLikeCardStatus(cardId, like) {
       
       return fetch(`${this._address}/cards/${cardId}/likes`, {
+        credentials: 'include',
         method: like ? 'PUT' : 'DELETE',
         headers: {
           'Authorization': `Bearer ${this._token}`,
@@ -102,6 +109,7 @@ class Api {
   
     register(email, password) {
       return fetch(`${this._address}/signup`, {
+        credentials: 'include',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -113,6 +121,7 @@ class Api {
   
     login(email, password) {
       return fetch(`${this._address}/signin`, {
+        credentials: 'include',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -129,6 +138,7 @@ class Api {
   
     checkToken(token) {
       return fetch(`${this._address}/users/me`, {
+        credentials: 'include',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -139,7 +149,8 @@ class Api {
   }
   }
   // Замените на адрес вашего бэкенда
-  const api = new Api('http://localhost:3000');
-  
+  // const api = new Api('http://localhost:3000');
+  const api = new Api('https://api.avs85fe1.nomorepartiessbs.ru');
+
   export default api;
   
